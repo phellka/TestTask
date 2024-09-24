@@ -55,6 +55,31 @@ int main()
                 break;
             }
             case 3: {
+                std::map<std::string, std::vector<Object>> groups;
+                std::cout << "What type of group? 1 for distance, 2 for name, 3 for type" << std::endl;
+                int grAns;
+                std::cin >> grAns;
+                switch (grAns)
+                {
+                    case 1: {
+                        groups = listOfObjects.groupByDistance();
+                        break;
+                    }
+                    case 2: {
+                        groups = listOfObjects.groupByName();
+                        break;
+                    }
+                    case 3: {
+                        std::cout << "grouping more than n objects, n:";
+                        int n;
+                        std::cin >> n;
+                        std::cout << std::endl;
+                        groups = listOfObjects.groupByType(n);
+                        break;
+                    }
+                }
+                ListOfObjects::printGroupedObjects(&groups);
+
                 break;
             }
             case 4: {

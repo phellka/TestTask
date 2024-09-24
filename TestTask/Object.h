@@ -37,7 +37,7 @@ public:
 		return std::format("{} {} {} {} {}", name, coordinate_X, coordinate_Y, type, creationTime);
 	}
 
-	std::string toString() {
+	std::string toString() const{
 		return *this;
 	}
 };
