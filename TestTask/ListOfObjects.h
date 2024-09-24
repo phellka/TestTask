@@ -7,6 +7,8 @@
 #include <algorithm>
 
 #include "Object.h"
+#include "ObjectFileManager.h"
+#include "ObjectGrouper.h"
 
 
 class ListOfObjects
@@ -21,9 +23,13 @@ public:
 	bool loadObjectsFrmFile(std::string file);
 	bool saveObjectsToFile(std::string file);
 
-	std::map <std::string, std::vector<Object>>groupByDistance();
-	std::map <std::string, std::vector<Object>>groupByName();
-	std::map <std::string, std::vector<Object>>groupByType(int n);
 	static void printGroupedObjects(std::map <std::string, std::vector<Object>>* groups);
+	std::map<std::string, std::vector<Object>> groupByDistance();
+	std::map<std::string, std::vector<Object>> groupByName();
+	std::map<std::string, std::vector<Object>> groupByType(int n);
+
+	std::vector<Object> getObjects() const {
+		return objects;
+	}
 };
 

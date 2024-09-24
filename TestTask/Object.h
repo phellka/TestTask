@@ -14,13 +14,8 @@ public:
 	std::string type;
 	double creationTime;
 
-	Object(std::string name, double coordinate_X, double coordinate_Y, std::string type, double creationTime) {
-		this->name = name;
-		this->coordinate_X = coordinate_X;
-		this->coordinate_Y = coordinate_Y;
-		this->type = type;
-		this->creationTime = creationTime;
-	}
+	Object(std::string name, double coordinate_X, double coordinate_Y, std::string type, double creationTime)
+		: name(name), coordinate_X(coordinate_X), coordinate_Y(coordinate_Y), type(type), creationTime(creationTime) {}
 
 	Object(const std::string& str) {
 		std::istringstream iss(str);
