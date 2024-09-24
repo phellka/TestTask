@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{c2a9dbed-1d81-41a4-9757-e7153f1d4030}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestTask.cpp">
@@ -29,9 +32,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Object.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ListOfObjects.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -40,6 +40,21 @@
     </ClInclude>
     <ClInclude Include="ObjectGrouper.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Cars.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Object.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Human.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\GenericObject.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\ObjectFactory.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

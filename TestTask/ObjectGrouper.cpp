@@ -1,11 +1,11 @@
 #include "ObjectGrouper.h"
 
 
-std::map<std::string, std::vector<Object>> ObjectGrouper::groupByDistance(const std::vector<Object>& objects)
+std::map<std::string, std::vector<Object*>> ObjectGrouper::groupByDistance(const std::vector<Object*>& objects)
 {
-	std::map<std::string, std::vector<Object>> groups = std::map<std::string, std::vector<Object>>();
+	std::map<std::string, std::vector<Object*>> groups = std::map<std::string, std::vector<Object*>>();
 	for (int i = 0; i < objects.size(); ++i) {
-		double distance = std::abs(objects[i].coordinate_X) + std::abs(objects[i].coordinate_Y);
+		double distance = std::abs(objects.at(i)->coordinate_X) + std::abs(objects.at(i)->coordinate_Y);
 		std::string key;
 		if (distance < 100) {
 			key = "before 100";
@@ -23,9 +23,9 @@ std::map<std::string, std::vector<Object>> ObjectGrouper::groupByDistance(const 
 	}
 
 	for (auto& group : groups) {
-		std::sort(group.second.begin(), group.second.end(), [](const Object& lhs, const Object& rhs) {
-			int ldst = std::abs(lhs.coordinate_X) + std::abs(lhs.coordinate_Y);
-			int rdst = std::abs(rhs.coordinate_X) + std::abs(rhs.coordinate_Y);
+		std::sort(group.second.begin(), group.second.end(), [](Object* lhs, Object* rhs) {
+			int ldst = std::abs(lhs->coordinate_X) + std::abs(lhs->coordinate_Y);
+			int rdst = std::abs(rhs->coordinate_X) + std::abs(rhs->coordinate_Y);
 			return ldst < rdst;
 			});
 	}
@@ -34,11 +34,11 @@ std::map<std::string, std::vector<Object>> ObjectGrouper::groupByDistance(const 
 	return groups;
 }
 
-std::map<std::string, std::vector<Object>> ObjectGrouper::groupByName(const std::vector<Object>& objects)
+std::map<std::string, std::vector<Object*>> ObjectGrouper::groupByName(const std::vector<Object*>& objects)
 {
-	std::map<std::string, std::vector<Object>> groups = std::map<std::string, std::vector<Object>>();
+	std::map<std::string, std::vector<Object*>> groups = std::map<std::string, std::vector<Object*>>();
 	for (int i = 0; i < objects.size(); ++i) {
-		char firstChar = objects[i].name[0];
+		char firstChar = objects.at(i)->name[0];
 		if (!std::isalpha(firstChar)) {
 			firstChar = '#';
 		}
@@ -49,29 +49,29 @@ std::map<std::string, std::vector<Object>> ObjectGrouper::groupByName(const std:
 	}
 
 	for (auto& group : groups) {
-		std::sort(group.second.begin(), group.second.end(), [](const Object& lhs, const Object& rhs) {
-			return lhs.name < rhs.name;
+		std::sort(group.second.begin(), group.second.end(), [](Object* lhs, Object* rhs) {
+			return lhs->name < rhs->name;
 			});
 	}
 
 	return groups;
 }
 
-std::map<std::string, std::vector<Object>> ObjectGrouper::groupByType(int n, const std::vector<Object>& objects)
+std::map<std::string, std::vector<Object*>> ObjectGrouper::groupByType(int n, const std::vector<Object*>& objects)
 {
-	std::map<std::string, std::vector<Object>> groups = std::map<std::string, std::vector<Object>>();
+	std::map<std::string, std::vector<Object*>> groups = std::map<std::string, std::vector<Object*>>();
 	std::map<std::string, int> buf;
 	for (int i = 0; i < objects.size(); ++i) {
-		buf[objects[i].type] += 1;
+		buf[objects.at(i)->type] += 1;
 	}
 	for (int i = 0; i < objects.size(); ++i) {
-		std::string key = (buf[objects[i].type] <= n) ? "different" : objects[i].type;
+		std::string key = (buf[objects.at(i)->type] <= n) ? "different" : objects.at(i)->type;
 		groups[key].push_back(objects[i]);
 	}
 
 	for (auto& group : groups) {
-		std::sort(group.second.begin(), group.second.end(), [](const Object& lhs, const Object& rhs) {
-			return lhs.name < rhs.name;
+		std::sort(group.second.begin(), group.second.end(), [](Object* lhs, Object* rhs) {
+			return lhs->name < rhs->name;
 			});
 	}
 

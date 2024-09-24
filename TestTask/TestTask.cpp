@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 
-#include "Object.h"
+#include "Models\Object.h"
+#include "Models\ObjectFactory.h"
 #include "ListOfObjects.h"
 
 ListOfObjects listOfObjects;
@@ -44,7 +45,7 @@ int main()
                     std::getline(std::cin, stringObj);
                 std::cout << std::endl;
                 try {
-                    Object obj(stringObj);
+                    Object* obj = ObjectFactory::createObject(stringObj);
                     listOfObjects.addObject(obj);
                     std::cout << "Successfully added" << std::endl;
                 }
@@ -55,7 +56,7 @@ int main()
                 break;
             }
             case 3: {
-                std::map<std::string, std::vector<Object>> groups;
+                std::map<std::string, std::vector<Object*>> groups;
                 std::cout << "What type of group? 1 for distance, 2 for name, 3 for type" << std::endl;
                 int grAns;
                 std::cin >> grAns;
