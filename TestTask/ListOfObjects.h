@@ -7,20 +7,24 @@
 #include <algorithm>
 
 #include "Models\Object.h"
-#include "ObjectFileManager.h"
 #include "ObjectGrouper.h"
+#include "PostgreDBManager.h"
+#include "AbstractDBManager.h"
 
 
 class ListOfObjects
 {
 private:
 	std::vector<Object*> objects;
+	AbstractDBManager* dbManager;
 
 public:
+	ListOfObjects();
+	~ListOfObjects();
+
 	int length();
 	bool addObject(Object* obj);
-	bool loadObjectsFrmFile(std::string file);
-	bool saveObjectsToFile(std::string file);
+	bool loadObjectsFrmDB();
 
 	static void printGroupedObjects(std::map <std::string, std::vector<Object*>>* groups);
 	std::map<std::string, std::vector<Object*>> groupByDistance();
@@ -30,7 +34,5 @@ public:
 	std::vector<Object*> getObjects() const {
 		return objects;
 	}
-
-	~ListOfObjects();
 };
 

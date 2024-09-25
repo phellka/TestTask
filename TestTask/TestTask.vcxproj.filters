@@ -24,18 +24,15 @@
     <ClCompile Include="ListOfObjects.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectFileManager.cpp">
+    <ClCompile Include="ObjectGrouper.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectGrouper.cpp">
+    <ClCompile Include="PostgreDBManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ListOfObjects.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectFileManager.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ObjectGrouper.h">
@@ -56,5 +53,14 @@
     <ClInclude Include="Models\ObjectFactory.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="PostgreDBManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractDBManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

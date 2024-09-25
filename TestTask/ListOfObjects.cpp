@@ -7,6 +7,12 @@ ListOfObjects::~ListOfObjects()
 		delete p;
 	}
 	objects.clear();
+	delete dbManager;
+}
+
+ListOfObjects::ListOfObjects()
+{
+	dbManager = new PostgreDBManager();
 }
 
 int ListOfObjects::length()
@@ -16,18 +22,18 @@ int ListOfObjects::length()
 
 bool ListOfObjects::addObject(Object* obj)
 {
-	objects.push_back(obj);
-	return true;
+	bool res = dbManager->addObjectToDB(obj);
+	if (res) {
+		objects.push_back(obj);
+	}
+	return res;
 }
 
-bool ListOfObjects::loadObjectsFrmFile(std::string file)
+bool ListOfObjects::loadObjectsFrmDB()
 {
-	return ObjectFileManager::loadObjectsFrmFile(file, objects);
+	return dbManager->loadObjectsFrmDb(objects);;
 }
 
-bool ListOfObjects::saveObjectsToFile(std::string file) {
-	return ObjectFileManager::saveObjectsToFile(file, objects);
-}
 
 std::map<std::string, std::vector<Object*>> ListOfObjects::groupByDistance() {
 	return ObjectGrouper::groupByDistance(objects);
