@@ -14,10 +14,10 @@ class PostgreDBManager : public AbstractDBManager
 {
 private:
     std::string dbhost = "localhost";
-    int         dbport = 5432;
+    int         dbport = 5433;
     std::string dbname = "postgres";
     std::string dbuser = "postgres";
-    std::string dbpass = "12345678";
+    std::string dbpass = "postgres";
 
 public:
 	bool loadObjectsFrmDb(std::vector<Object*>& objects);

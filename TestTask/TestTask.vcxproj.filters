@@ -62,5 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="docker-compose.yml" />
+    <None Include="init.sql" />
   </ItemGroup>
 </Project>

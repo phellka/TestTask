@@ -153,6 +153,8 @@
     <ClInclude Include="PostgreDBManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="docker-compose.yml" />
+    <None Include="init.sql" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
